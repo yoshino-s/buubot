@@ -1,0 +1,25 @@
+version: '3'
+services:
+  buu_bot:
+    build: .
+    container_name: buu_bot
+    restart: always
+    volumes:
+      - ./session:/app/session
+      - ./cache.json:/app/cache.json
+      - ./perm.json:/app/perm.json
+  cqhttp:
+    image: richardchien/cqhttp:latest
+    container_name: cqhttp
+    restart: always
+    environment:
+      VNC_PASSWD: "password"
+      CQHTTP_SERVE_DATA_FILES: 'yes'
+      CQHTTP_WS_REVERSE_URL: ws://buu_bot:8080/ws/
+      CQHTTP_USE_WS_REVERSE: 'yes'
+      FORCE_ENV: 'yes'
+    ports:
+      - 9000:9000
+      - 5700:5700
+    volumes:
+      - ./coolq:/home/user/coolq
