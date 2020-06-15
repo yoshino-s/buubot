@@ -24,7 +24,7 @@ Change the `VNC_PASSWD: "password"` in the `docker-compose.yml`, to protect your
 
 ### Start
 
-```sh
+```bash
 # sudo
 docker-compose build
 docker-compose up -d
@@ -36,7 +36,7 @@ And connect to the `localhost:9000` to configure the coolq.
 
 ### Log
 
-```sh
+```bash
 docker-compose logs -f
 ```
 
